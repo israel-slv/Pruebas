@@ -103,8 +103,8 @@ def main():
     LCS = []
 
     while camino[1] != 0 and camino[2] != 0:
-        camino = dic[(camino[1], camino[2])]
         LCS.append(X[camino[1]])
+        camino = dic[(camino[1], camino[2])]
 
     LCS.reverse()
 

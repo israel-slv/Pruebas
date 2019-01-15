@@ -182,4 +182,3 @@ def bt_solve(initial_ps : PartialSolution) -> List[Solution]:
 
 # d) initial_ps = BuscaSumandosPS([]) Le pasamos una lista vacía inicialmente, ya que no hay decisiones tomadas previamente
 
-
