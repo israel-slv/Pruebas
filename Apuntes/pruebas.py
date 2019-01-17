@@ -1,56 +1,17 @@
 from typing import *
 
+v = [1,1,2,2,3,4,4,5,5,6,6,7,7,8,8]
 
-def solve(v: List[int], numero: int) -> int:
-    pivote = 0
-    izquierda = 0
-    derecha = len(v) - 1
-    apariciones = 0
-    listaIzquierda = []
-    listaDerecha = []
-
-    while izquierda != derecha and v[pivote] != numero:
-        pivote = (izquierda + derecha + 1) // 2
-        if v[pivote] >= numero:
-            derecha = pivote
-        else:
-            izquierda = pivote
-
-    print(pivote)
-    listaIzquierda = v[0: pivote]
-    listaDerecha = v[pivote + 1: len(v)]
-
-    indiceCorteIzquierdo = buscarNumero(listaIzquierda, numero - 1, numero)
-    indiceCorteDerecho = buscarNumero(listaDerecha, numero + 1, numero) + pivote + 1
-    apariciones = (indiceCorteDerecho - indiceCorteIzquierdo) - 1
-
-    print(indiceCorteIzquierdo)
-    print(indiceCorteDerecho)
-
-    return apariciones
-
-
-def buscarNumero(lista: List[int], numero: int, numeroOriginal: int) -> int:
-    pivote = 0
-    izquierda = 0
-    derecha = len(lista) - 1
-
-    while (derecha - izquierda) > 1:
-        pivote = (izquierda + derecha + 1) // 2
-
-        if lista[pivote] >= numero:
-            derecha = pivote
-        else:
-            izquierda = pivote
-
-    if lista[izquierda] != numeroOriginal:
-        return izquierda
+def busca_indice_solitario(v: List[int], i: int, j: int) -> int:
+    if i > j:
+        return -1
+    if v[i] != v[i+1]:
+        return i
+    if v[j] != v[j-1]:
+        return j
     else:
-        return derecha
+        return busca_indice_solitario(v, i+2, j-2)
 
 
-lista = [-5,-5,1,1,2,2,2,2,4,4,4,7]
-numero1 = 4
-
-
-print(solve(lista, numero1))
+print(busca_indice_solitario(v, 0, len(v)-1))
+print(v[busca_indice_solitario(v, 0, len(v)-1)])
