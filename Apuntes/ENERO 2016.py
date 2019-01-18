@@ -92,7 +92,7 @@ def func_opt(dias, beneficios, duracion) -> float:
     return beneficio
 
 
-def func_opt(dias, beneficios, duracion) -> float:
+def func_pes(dias, beneficios, duracion) -> float:
     # Ejercicio hecho con elementos ordenados por alguien
     diasRestantes = dias
     beneficio = 0
